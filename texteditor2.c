@@ -7,11 +7,9 @@ int main()
 	char in, file_name[35];
 	char content[1000];
 	int choice;
-	printf("\n\t\t\tNotepad\n");
+	printf("\n\t\t\tNotepad 2.0\n");
 
 	printf("\n\t\t\tEnter file name: ");
-	// fgets(file_name, sizeof(file_name), stdin);
-	// gets(file_name);
 	scanf("%s", file_name);
 	printf("\n\nEnter your choice\n1.Read\n2.Write\n3.Add\n4.Exit\n");
 	scanf("%d", &choice);
