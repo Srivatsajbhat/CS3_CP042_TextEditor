@@ -13,7 +13,7 @@ int main()
 
 	printf("\n\t\t\tEnter file name: ");
 	scanf("%s", file_name);
-	printf("\n\nEnter your choice\n1.Read\n2.Write\n3.Add\n4.Exit\n");
+	printf("\n\nEnter your choice\n1.Read\n2.Write\n3.Add\n4.Delete\n5.Exit\n");
 	scanf("%d", &choice);
 	switch (choice)
 	{
@@ -66,8 +66,25 @@ int main()
 		}
 		fclose(fptr);
 		break;
-
 	case 4:
+
+		// Attempt to delete the file
+		if (fptr == NULL)
+		{
+			printf("File not found or unable to open.\n");
+			exit(1);
+		}
+		else if (remove(file_name) == 0)
+		{
+			printf("File '%s' deleted successfully.\n", file_name);
+		}
+		else
+		{
+			perror("Error deleting the file");
+		}
+		return 0;
+
+	case 5:
 		exit(0);
 
 	default:
