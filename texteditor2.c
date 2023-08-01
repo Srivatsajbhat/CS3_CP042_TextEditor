@@ -82,7 +82,7 @@ int main()
 		{
 			perror("Error deleting the file");
 		}
-		return 0;
+		break;
 
 	case 5:
 		exit(0);
