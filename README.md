@@ -48,16 +48,6 @@ Users can search for specific words or phrases within the text file using the "F
 
 5. Follow the on-screen instructions to interact with Notepad 2.0.
 
-## Team Members
-
-This project was developed by the following team members:
-
-1. Shreyas S Kotian - 4MT21CS153
-2. Srivatsa J Bhat - 4MT21CS163
-3. Uttam - 4MT21CS175
-4. Valluru Narendra - 4MT21CS177
-5. Vipul Nayak - 4MT21CS182
-
 ## Note
 
 Notepad 2.0 provides a simple yet effective text-based interface for manipulating text files. While it may not have a graphical user interface like modern text editors, it offers essential functionalities for everyday text editing tasks. Contributions to the project are welcome to enhance its features and functionality further.
