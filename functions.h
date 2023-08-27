@@ -1,11 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include<stdbool.h>
+#include <stdbool.h>
 
-bool endsWithEnd(const char *str) {
+bool endsWithEnd(const char *str)
+{
     size_t len = strlen(str);
-    if (len < 3) {
+    if (len < 3)
+    {
         return false; // String is too short to match "End"
     }
     return strcmp(str + len - 4, "Stop") == 0;
@@ -51,8 +53,9 @@ void CREATE_FILE(const char *file_name)
         {
             content[len - 1] = '\0'; // Replace '\n' with '\0' (null character)
         }
-        status=endsWithEnd(content);
-        if (status) {
+        status = endsWithEnd(content);
+        if (status)
+        {
             break; // Stop if user enters "End"
         }
         fputs(content, fptr);
@@ -82,8 +85,9 @@ void UPDATE_FILE(const char *file_name)
         {
             content[len - 1] = '\0'; // Replace '\n' with '\0' (null character)
         }
-        status=endsWithEnd(content);
-        if (status) {
+        status = endsWithEnd(content);
+        if (status)
+        {
             break; // Stop if user enters "End"
         }
         fputs(content, fptr);
@@ -105,6 +109,7 @@ void DELETE_FILE(const char *fileName)
     }
 }
 
+// Copy and Paste a file
 void COPY_FILE(const char *source_file)
 {
     char destination_file[35];
@@ -129,6 +134,38 @@ void COPY_FILE(const char *source_file)
     {
         fputc(ch, destination);
     }
+    fclose(source);
+    fclose(destination);
+    printf("File copied successfully.\n");
+}
+
+// Cut and Paste a file
+void CUT_FILE(const char *source_file)
+{
+    char destination_file[35];
+    printf("Enter destination file name: ");
+    scanf("%s", destination_file);
+    FILE *source, *destination;
+    char buffer[1024];
+    source = fopen(source_file, "r");
+    if (source == NULL)
+    {
+        printf("Source file not found or unable to open.\n");
+        return;
+    }
+    destination = fopen(destination_file, "w");
+    if (destination == NULL)
+    {
+        printf("Unable to create or open the destination file.\n");
+        fclose(source);
+        return;
+    }
+    while (fgets(buffer, sizeof(buffer), source) != NULL)
+    {
+        fputs(buffer, destination);
+    }
+    fclose(source);
+    source = fopen(source_file, "w");
     fclose(source);
     fclose(destination);
     printf("File copied successfully.\n");

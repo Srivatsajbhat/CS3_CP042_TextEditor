@@ -15,7 +15,7 @@ int main()
 	do
 	{
 
-		printf("\n\nEnter your choice\n1.Create a file\n2.Read a file\n3.Update a file\n4.Delete a file\n5.Copy and paste a file\n6.Exit\n");
+		printf("\n\nEnter your choice\n1.Create a file\n2.Read a file\n3.Update a file\n4.Delete a file\n5.Copy and paste a file\n6.Cut and Paste a file\n7.Exit\n");
 		scanf("%d", &choice);
 		printf("\n\t\t\tEnter file name: ");
 		scanf("%s", file_name);
@@ -46,6 +46,9 @@ int main()
 			COPY_FILE(file_name);
 			break;
 		case 6:
+			CUT_FILE(file_name);
+			break;
+		case 7:
 			// Exit
 			exit(0);
 
