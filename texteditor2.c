@@ -2,9 +2,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-
-
-
+#include "functions.h"
 
 int main()
 {
@@ -16,60 +14,36 @@ int main()
 
 	printf("\n\t\t\tEnter file name: ");
 	scanf("%s", file_name);
-	printf("\n\nEnter your choice\n1.Read\n2.Write\n3.Add\n4.Delete\n5.Exit\n");
+	printf("\n\nEnter your choice\n1.Read\n2.Create\n3.Update\n4.Delete\n5.Exit\n");
 	scanf("%d", &choice);
 	switch (choice)
 	{
-
 	case 1:
 		// Read mode
-		addFile(file_name);
+		readFile(file_name);
 		break;
+
 	case 2:
-		// Write mode
-		fptr = fopen(file_name, "w");
-		if (fptr == NULL)
-		{
-			printf("File not found or unable to open.\n");
-			return 1;
-		}
-		printf("\n\n\t\t\tWRITE MODE\n");
-		printf("Enter the content to write (Press Ctrl+Z or Ctrl+D to stop):\n");
-		while (fgets(content, sizeof(content), stdin) != NULL)
-		{
-			fputs(content, fptr);
-		}
-		fclose(fptr);
+		createFile(file_name);
 		break;
 
 	case 3:
-		// Add mode
-		fptr = fopen(file_name, "a");
-		if (fptr == NULL)
-		{
-			printf("File not found or unable to open.\n");
-			exit(1);
-		}
-		printf("\n\n\t\t\tAPPEND MODE\n");
-		printf("Enter the content to append (Press Ctrl+Z or Ctrl+D to stop):\n");
-		while ((in = getchar()) != EOF)
-		{
-			putc(in, fptr);
-		}
-		fclose(fptr);
+		// update mode
+		updateFile(file_name);
 		break;
-	case 4:
 
+	case 4:
 		// Attempt to delete the file
-		deleteFile(file_name)
+		deleteFile(file_name);
 		break;
+
 	case 5:
 		exit(0);
 
 	default:
 		printf("Invalid choice! try again\n");
 		break;
-	}
 
+	}
 	return 0;
 }
