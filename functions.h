@@ -170,3 +170,31 @@ void CUT_FILE(const char *source_file)
     fclose(destination);
     printf("File copied successfully.\n");
 }
+
+//Replace a string
+void REPLACE_FILE(const char *file_name, const char *old_str, const char *new_str)
+{
+    FILE *fptr;
+    char buffer[1024];
+    char *pos;
+    fptr = fopen(file_name, "r");
+    if (fptr == NULL)
+    {
+        printf("File not found or unable to open.\n");
+        return;
+    }
+    while (fgets(buffer, sizeof(buffer), fptr) != NULL)
+    {
+        pos = strstr(buffer, old_str);
+        if (pos != NULL)
+        {
+            // Replace the substring
+            memmove(pos, new_str, strlen(new_str));
+            pos += strlen(new_str);
+            // Truncate the string after the replaced substring
+            buffer[pos - buffer] = '\0';
+        }
+        fputs(buffer, stdout);
+    }
+    fclose(fptr);
+}

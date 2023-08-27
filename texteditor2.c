@@ -15,7 +15,7 @@ int main()
 	do
 	{
 
-		printf("\n\nEnter your choice\n1.Create a file\n2.Read a file\n3.Update a file\n4.Delete a file\n5.Copy and paste a file\n6.Cut and Paste a file\n7.Exit\n");
+		printf("\n\nEnter your choice\n1.Create a file\n2.Read a file\n3.Update a file\n4.Delete a file\n5.Copy and paste a file\n6.Cut and Paste a file\n7.Replace a String\n8.Find\n9.Exit\n");
 		scanf("%d", &choice);
 		printf("\n\t\t\tEnter file name: ");
 		scanf("%s", file_name);
@@ -49,6 +49,19 @@ int main()
 			CUT_FILE(file_name);
 			break;
 		case 7:
+			// replace
+			printf("Enter file name: ");
+            scanf("%s", file_name);
+            printf("Enter old substring: ");
+            scanf("%s", old_str);
+            printf("Enter new substring: ");
+            scanf("%s", new_str);
+            REPLACE_FILE(file_name, old_str, new_str);
+            break;
+		// case 8:
+		// 	//find
+		// 	break;
+		case 9:
 			// Exit
 			exit(0);
 
