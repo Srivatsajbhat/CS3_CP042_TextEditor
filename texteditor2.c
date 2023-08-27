@@ -2,9 +2,10 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#define BUFFER_SIZE 1024
 
 int main()
-{
+{	
 	FILE *fptr;
 	char in, file_name[35];
 	char content[1000];
@@ -13,7 +14,7 @@ int main()
 
 	printf("\n\t\t\tEnter file name: ");
 	scanf("%s", file_name);
-	printf("\n\nEnter your choice\n1.Read\n2.Write\n3.Add\n4.Delete\n5.Exit\n");
+	printf("\n\nEnter your choice\n1.Read\n2.Write\n3.Add\n4.Delete\n5.Copy\n6.Exit\n");
 	scanf("%d", &choice);
 	switch (choice)
 	{
@@ -83,8 +84,10 @@ int main()
 			perror("Error deleting the file");
 		}
 		break;
-
 	case 5:
+	printf("copy and paste");
+
+	case 6:
 		exit(0);
 
 	default:
