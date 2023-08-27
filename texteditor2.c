@@ -3,22 +3,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void addFile(FILE *fptr, char file_name)
-{
-	char in;
-	fptr = fopen(file_name, "r");
-	if (fptr == NULL)
-	{
-		printf("File not found or unable to open.\n");
-		exit(1);
-	}
-	printf("\n\n\t\t\tREAD MODE\n");
-	while ((in = fgetc(fptr)) != EOF)
-	{
-		printf("%c", in);
-	}
-	fclose(fptr);
-}
+
+
 
 int main()
 {
@@ -37,7 +23,7 @@ int main()
 
 	case 1:
 		// Read mode
-		addFile(fptr, file_name);
+		addFile(file_name);
 		break;
 	case 2:
 		// Write mode
@@ -75,21 +61,8 @@ int main()
 	case 4:
 
 		// Attempt to delete the file
-		if (fptr == NULL)
-		{
-			printf("File not found or unable to open.\n");
-			exit(1);
-		}
-		else if (remove(file_name) == 0)
-		{
-			printf("File '%s' deleted successfully.\n", file_name);
-		}
-		else
-		{
-			perror("Error deleting the file");
-		}
+		deleteFile(file_name)
 		break;
-
 	case 5:
 		exit(0);
 
