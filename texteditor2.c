@@ -3,6 +3,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void addFile(FILE *fptr, char file_name)
+{
+	char in;
+	fptr = fopen(file_name, "r");
+	if (fptr == NULL)
+	{
+		printf("File not found or unable to open.\n");
+		exit(1);
+	}
+	printf("\n\n\t\t\tREAD MODE\n");
+	while ((in = fgetc(fptr)) != EOF)
+	{
+		printf("%c", in);
+	}
+	fclose(fptr);
+}
+
 int main()
 {
 	FILE *fptr;
@@ -17,22 +34,11 @@ int main()
 	scanf("%d", &choice);
 	switch (choice)
 	{
+
 	case 1:
 		// Read mode
-		fptr = fopen(file_name, "r");
-		if (fptr == NULL)
-		{
-			printf("File not found or unable to open.\n");
-			exit(1);
-		}
-		printf("\n\n\t\t\tREAD MODE\n");
-		while ((in = fgetc(fptr)) != EOF)
-		{
-			printf("%c", in);
-		}
-		fclose(fptr);
+		addFile(fptr, file_name);
 		break;
-
 	case 2:
 		// Write mode
 		fptr = fopen(file_name, "w");
