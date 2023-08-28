@@ -171,9 +171,16 @@ void CUT_FILE(const char *source_file)
     printf("File copied successfully.\n");
 }
 
-//Replace a string
-void REPLACE_FILE(const char *file_name, const char *old_str, const char *new_str)
+// replace function
+void REPLACE_FILE(const char *file_name)
 {
+    char old_str,new_str;
+    printf("Enter file name: ");
+    scanf("%s", file_name);
+    printf("Enter old substring: ");
+    scanf("%s", old_str);
+    printf("Enter new substring: ");
+    scanf("%s", new_str);
     FILE *fptr;
     char buffer[1024];
     char *pos;
@@ -196,5 +203,33 @@ void REPLACE_FILE(const char *file_name, const char *old_str, const char *new_st
         }
         fputs(buffer, stdout);
     }
+    fclose(fptr);
+}
+
+// find
+void FIND_FILE(const char *file_name)
+{
+    char sub_str;
+    printf("Enter the string to find: ");
+    scanf("%s",sub_str);
+    FILE *fptr;
+    char buffer[1024];
+    char *pos;
+    int index = -1;
+    fptr = fopen(file_name, "r");
+    if (fptr == NULL)
+    {
+        printf("File not found or unable to open.\n");
+    }
+    while (fgets(buffer, sizeof(buffer), fptr) != NULL)
+    {
+        pos = strstr(buffer, sub_str);
+        if (pos != NULL)
+        {
+            index = pos - buffer;
+            break;
+        }
+    }
+    printf("The string is found!\n")
     fclose(fptr);
 }

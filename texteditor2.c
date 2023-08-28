@@ -50,16 +50,10 @@ int main()
 			break;
 		case 7:
 			// replace
-			printf("Enter file name: ");
-            scanf("%s", file_name);
-            printf("Enter old substring: ");
-            scanf("%s", old_str);
-            printf("Enter new substring: ");
-            scanf("%s", new_str);
-            REPLACE_FILE(file_name, old_str, new_str);
+            REPLACE_FILE(file_name);
             break;
-		// case 8:
-		// 	//find
+		case 8:
+			FIND_FILE(file_name);
 		// 	break;
 		case 9:
 			// Exit
