@@ -35,6 +35,7 @@ void READ_FILE(const char *file_name)
 // Create a file
 void CREATE_FILE(const char *file_name)
 {
+    printf("Press Enter and type Stop to end input.\n");
     FILE *fptr;
     bool status;
     char content[1000];
@@ -43,7 +44,7 @@ void CREATE_FILE(const char *file_name)
     {
         printf("File not found or unable to open.\n");
     }
-    printf("\n\n\t\t\tWRITE MODE\n");
+    printf("\n\t\t\tWRITE MODE\n");
     printf("Enter the content to write (Press Ctrl+Z or Ctrl+D to stop):\n");
     while (fgets(content, sizeof(content), stdin) != NULL)
     {
@@ -113,7 +114,7 @@ void DELETE_FILE(const char *fileName)
 void COPY_FILE(const char *source_file)
 {
     char destination_file[35];
-    printf("Enter destination file name: ");
+    printf("\n\t\t\tEnter destination file name: ");
     scanf("%s", destination_file);
     FILE *source, *destination;
     char ch;
@@ -143,7 +144,7 @@ void COPY_FILE(const char *source_file)
 void CUT_FILE(const char *source_file)
 {
     char destination_file[35];
-    printf("Enter destination file name: ");
+    printf("\n\t\t\tEnter destination file name: ");
     scanf("%s", destination_file);
     FILE *source, *destination;
     char buffer[1024];
