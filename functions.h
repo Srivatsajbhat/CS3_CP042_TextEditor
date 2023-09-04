@@ -172,33 +172,6 @@ void CUT_FILE(const char *source_file)
     printf("File copied successfully.\n");
 }
 
-// replace function
-void REPLACE_FILE(const char *file_name, const char *old_str, const char *new_str)
-{
-    FILE *fptr;
-    char buffer[1024];
-    char *pos;
-    fptr = fopen(file_name, "r");
-    if (fptr == NULL)
-    {
-        printf("File not found or unable to open.\n");
-        return;
-    }
-    while (fgets(buffer, sizeof(buffer), fptr) != NULL)
-    {
-        pos = strstr(buffer, old_str);
-        if (pos != NULL)
-        {
-            // Replace the substring
-            memmove(pos, new_str, strlen(new_str));
-            pos += strlen(new_str);
-            // Truncate the string after the replaced substring
-            buffer[pos - buffer] = '\0';
-        }
-        fputs(buffer, stdout);
-    }
-    fclose(fptr);
-}
 
 // find
 //void FIND_FILE(const char *file_name)
@@ -227,3 +200,54 @@ void REPLACE_FILE(const char *file_name, const char *old_str, const char *new_st
 //    printf("The string is found!\n");
 //    fclose(fptr);
 //}
+
+// replace function
+void REPLACE_FILE(const char *file_name, const char *old_str, const char *new_str) {
+    FILE *fptr;
+    FILE *tempFile;
+    char buffer[1024];
+    char new_buffer[1024];
+    char *pos;
+
+    fptr = fopen(file_name, "r");
+    if (fptr == NULL) {
+        printf("File not found or unable to open.\n");
+        return;
+    }
+
+    tempFile = fopen("temp.txt", "w");
+    if (tempFile == NULL) {
+        printf("Error creating temporary file.\n");
+        fclose(fptr);
+        return;
+    }
+
+    while (fgets(buffer, sizeof(buffer), fptr) != NULL) {
+        pos = strstr(buffer, old_str);
+
+        if (pos != NULL) {
+            // Copy characters before the old_str
+            strncpy(new_buffer, buffer, pos - buffer);
+            new_buffer[pos - buffer] = '\0'; // Null-terminate the new string
+
+            // Append the new_str
+            strcat(new_buffer, new_str);
+
+            // Append the characters after the old_str
+            strcat(new_buffer, pos + strlen(old_str));
+
+            // Write the modified line to the temporary file
+            fputs(new_buffer, tempFile);
+        } else {
+            // If old_str not found, write the original line
+            fputs(buffer, tempFile);
+        }
+    }
+
+    fclose(fptr);
+    fclose(tempFile);
+
+    // Remove the original file and rename the temporary file
+    remove(file_name);
+    rename("temp.txt", file_name);
+}
