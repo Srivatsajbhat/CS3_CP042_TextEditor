@@ -10,6 +10,7 @@ int main()
 	char in, file_name[35];
 
 	int choice;
+	char old_str,new_str;
 
 	printf("\n\t\t\tNotepad 2.0\n");
 	do
@@ -50,10 +51,14 @@ int main()
 			break;
 		case 7:
 			// replace
-            REPLACE_FILE(file_name);
+			printf("Enter old substring: ");
+    		scanf("%s", old_str);
+    		printf("Enter new substring: ");
+    		scanf("%s", new_str);
+            REPLACE_FILE(file_name,old_str,new_str);
             break;
 		case 8:
-			FIND_FILE(file_name);
+			// FIND_FILE(file_name);
 		// 	break;
 		case 9:
 			// Exit
