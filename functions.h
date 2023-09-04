@@ -243,3 +243,8 @@ int isStringInFile(const char *file_name, const char *search_str) {
     fclose(file);
     return 0; // Return 0 to indicate failure (string not found)
 }
+
+// View
+void VIEW_FILES(){
+    system("dir /b *.txt *.docx");
+}
