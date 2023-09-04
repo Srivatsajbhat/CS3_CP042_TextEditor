@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void addFile(const char *file_name)
+void readFile(const char *file_name)
 {
 	FILE *fptr;
     char in;
@@ -18,6 +18,7 @@ void addFile(const char *file_name)
     }
     fclose(fptr);
 }
+
 void deleteFile(const char *fileName){
 	int status = remove(fileName);
     if (status == 0)
