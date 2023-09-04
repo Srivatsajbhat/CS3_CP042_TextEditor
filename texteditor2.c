@@ -11,6 +11,7 @@ int main()
 
 	int choice;
 	char *old_str[100], *new_str[100];
+	char search_str[100];
 
 	printf("\n\t\t\tNotepad 2.0\n");
 	do
@@ -51,15 +52,25 @@ int main()
 			break;
 		case 7:
 			// replace
-            printf("Enter old substring: ");
-            scanf("%s", old_str);
-            printf("Enter new substring: ");
-            scanf("%s", new_str);
-            REPLACE_FILE(file_name, old_str, new_str);
-            break;
+			printf("Enter old substring: ");
+			scanf("%s", old_str);
+			printf("Enter new substring: ");
+			scanf("%s", new_str);
+			REPLACE_FILE(file_name, old_str, new_str);
+			break;
 		case 8:
+			printf("Enter the string to search for: ");
+			scanf("%s", search_str);
 			// FIND_FILE(file_name);
-		// 	break;
+			if (isStringInFile(file_name, search_str))
+			{
+				printf("String found in the file.\n");
+			}
+			else
+			{
+				printf("String not found in the file.\n");
+			}
+			break;
 		case 9:
 			// Exit
 			exit(0);

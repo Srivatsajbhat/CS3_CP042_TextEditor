@@ -174,8 +174,8 @@ void CUT_FILE(const char *source_file)
 
 
 // find
-//void FIND_FILE(const char *file_name)
-//{
+// void FIND_FILE(const char *file_name)
+// {
 //    char sub_str;
 //    printf("Enter the string to find: ");
 //    scanf("%s",sub_str);
@@ -199,7 +199,7 @@ void CUT_FILE(const char *source_file)
 //    }
 //    printf("The string is found!\n");
 //    fclose(fptr);
-//}
+// }
 
 // replace function
 void REPLACE_FILE(const char *file_name, const char *old_str, const char *new_str) {
@@ -250,4 +250,24 @@ void REPLACE_FILE(const char *file_name, const char *old_str, const char *new_st
     // Remove the original file and rename the temporary file
     remove(file_name);
     rename("temp.txt", file_name);
+}
+
+
+int isStringInFile(const char *file_name, const char *search_str) {
+    FILE *file = fopen(file_name, "r");
+    if (file == NULL) {
+        printf("File not found or unable to open.\n");
+        return 0; // Return 0 to indicate failure
+    }
+
+    char buffer[1024];
+    while (fgets(buffer, sizeof(buffer), file) != NULL) {
+        if (strstr(buffer, search_str) != NULL) {
+            fclose(file);
+            return 1; // Return 1 to indicate success (string found)
+        }
+    }
+
+    fclose(file);
+    return 0; // Return 0 to indicate failure (string not found)
 }
