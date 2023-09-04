@@ -173,34 +173,6 @@ void CUT_FILE(const char *source_file)
 }
 
 
-// find
-// void FIND_FILE(const char *file_name)
-// {
-//    char sub_str;
-//    printf("Enter the string to find: ");
-//    scanf("%s",sub_str);
-//    FILE *fptr;
-//    char buffer[1024];
-//    char *pos;
-//    int index = -1;
-//    fptr = fopen(file_name, "r");
-//    if (fptr == NULL)
-//    {
-//        printf("File not found or unable to open.\n");
-//    }
-//    while (fgets(buffer, sizeof(buffer), fptr) != NULL)
-//    {
-//        pos = strstr(buffer, sub_str);
-//        if (pos != NULL)
-//        {
-//            index = pos - buffer;
-//            break;
-//        }
-//    }
-//    printf("The string is found!\n");
-//    fclose(fptr);
-// }
-
 // replace function
 void REPLACE_FILE(const char *file_name, const char *old_str, const char *new_str) {
     FILE *fptr;
@@ -252,7 +224,7 @@ void REPLACE_FILE(const char *file_name, const char *old_str, const char *new_st
     rename("temp.txt", file_name);
 }
 
-
+//Find
 int isStringInFile(const char *file_name, const char *search_str) {
     FILE *file = fopen(file_name, "r");
     if (file == NULL) {
